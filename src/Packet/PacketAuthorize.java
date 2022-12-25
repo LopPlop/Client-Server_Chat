@@ -1,5 +1,6 @@
 package Packet;
 
+import Resources.ConsoleColor;
 import Server.Server;
 
 import java.io.DataInputStream;
@@ -35,6 +36,6 @@ public class PacketAuthorize extends OPacket{
     @Override
     public void handle() {
         Server.getHandler(getSocket()).setNickname(nickname);
-        System.out.println("К серверу приcоединился пользователь: " + Server.getHandler(getSocket()).getNickname());
+        System.out.println("К серверу приcоединился пользователь: " + ConsoleColor.ANSI_CYAN + Server.getHandler(getSocket()).getNickname() + ConsoleColor.ANSI_RESET);
     }
 }

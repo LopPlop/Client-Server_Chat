@@ -44,8 +44,19 @@ public class Server {
                 String mes = in.nextLine();
                 if(mes.equals("/end")){
                     try {
+                        System.out.println("Закрываем сокет...");
+                        Thread.sleep(1000);
+                        System.out.println("Ищем ошибки...");
+                        Thread.sleep(1500);
+                        System.out.println("Терминируем потоки...");
+                        Thread.sleep(1500);
+                        System.out.println("Сервер закрыт.");
                         Server.end();
+
+                        return;
                     } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
                 }else System.out.println("Неизвестная команда");

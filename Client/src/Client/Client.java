@@ -25,6 +25,11 @@ public class Client {
             ex.printStackTrace();
         }
     }
+
+    public static String getNickname()
+    {
+        return nickname;
+    }
     public static void sendPacket(OPacket packet) throws IOException{
         DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
         dos.writeInt(packet.getId());
@@ -79,7 +84,7 @@ public class Client {
                     end();
                 }
                 if(!sendNickname){
-                    System.out.println("Введите ник: ");
+                    System.out.print("Введите ник: ");
                     nickname = in.nextLine();
                     sendNickname = true;
                     sendPacket(new PacketAuthorize(nickname));

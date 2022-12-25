@@ -1,5 +1,9 @@
 package Packet;
 
+import Client.Client;
+import Resources.ConsoleColor;
+import com.sun.tools.javac.Main;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -32,7 +36,10 @@ public class PacketMessage extends OPacket{
     public void read(DataInputStream dis) throws IOException {
         sender = dis.readUTF();
         message = dis.readUTF();
-        System.out.println("[" + sender + "] " + message);
+        if(sender.equals(Client.getNickname()))
+            System.out.println(ConsoleColor.ANSI_GREEN + "[" + sender + "] " + ConsoleColor.ANSI_RESET + message );
+        else System.out.println(ConsoleColor.ANSI_CYAN +"[" + sender + "] "  + ConsoleColor.ANSI_RESET + message);
+
     }
 
     @Override
